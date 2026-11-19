@@ -1,1 +1,9 @@
 screenshots/
+example/build/
+example/.dart_tool/
+example/android/
+example/ios/
+example/linux/
+example/macos/
+example/web/
+example/windows/

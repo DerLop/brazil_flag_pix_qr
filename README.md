@@ -5,7 +5,7 @@
 
 
 <p align="center">
-  <img src="screenshots/demo_qr_brasil.png" width="720" alt="Demostración QR Bandera de Brasil" />
+  <img src="https://raw.githubusercontent.com/DerLop/brazil_flag_pix_qr/refs/heads/main/screenshots/demo_qr_brasil.png" width="720" alt="Demostración QR Bandera de Brasil" />
 </p>
 
 ---
@@ -89,12 +89,12 @@ BrazilFlagQr.pix(
 
 > **Nota:** La llave aleatoria incluida en la app de ejemplo (`example/`) es ficticia (solo para pruebas). Si deseas invitarme un café para apoyar el proyecto, utiliza los enlaces de PayPal o el QR de abajo. ☕
 
-<a href="https://www.paypal.com/donate/?business=45GRDVDKNTYWJ&no_recurring=0&item_name=Con+tu+ayuda+seguimos+mejorando+ArandukApp+gratis+para+acercar+el+idioma+y+la+cultura+guaran%C3%AD+a+todos.+%C2%A1Aguyjevete%21&currency_code=USD"><img src="screenshots/paypal.png" height="13" alt="Donar en USD" />  Donar en USD con Paypal</a>
+<a href="https://www.paypal.com/donate/?business=45GRDVDKNTYWJ&no_recurring=0&item_name=Con+tu+ayuda+seguimos+mejorando+ArandukApp+gratis+para+acercar+el+idioma+y+la+cultura+guaran%C3%AD+a+todos.+%C2%A1Aguyjevete%21&currency_code=USD"><img src="https://raw.githubusercontent.com/DerLop/brazil_flag_pix_qr/refs/heads/main/screenshots/paypal.png" height="13" alt="Donar en USD" />  Donar en USD con Paypal</a>
 <br/>
-<a href="https://www.paypal.com/donate/?business=45GRDVDKNTYWJ&no_recurring=0&item_name=Con+tu+ayuda+seguimos+mejorando+ArandukApp+gratis+para+acercar+el+idioma+y+la+cultura+guaran%C3%AD+a+todos.+%C2%A1Aguyjevete%21&currency_code=EUR"><img src="screenshots/paypal.png" height="13" alt="Donar en EUR" />  Donar en EUR con Paypal</a>
+<a href="https://www.paypal.com/donate/?business=45GRDVDKNTYWJ&no_recurring=0&item_name=Con+tu+ayuda+seguimos+mejorando+ArandukApp+gratis+para+acercar+el+idioma+y+la+cultura+guaran%C3%AD+a+todos.+%C2%A1Aguyjevete%21&currency_code=EUR"><img src="https://raw.githubusercontent.com/DerLop/brazil_flag_pix_qr/refs/heads/main/screenshots/paypal.png" height="13" alt="Donar en EUR" />  Donar en EUR con Paypal</a>
 
 <p><strong>O escanea este QR Pix para apoyar el proyecto:</strong></p>
-<img src="screenshots/qr_pix.png" width="180" alt="QR Pix de donación" />
+<img src="https://raw.githubusercontent.com/DerLop/brazil_flag_pix_qr/refs/heads/main/screenshots/qr_pix.png" width="180" alt="QR Pix de donación" />
 
 ---
 
@@ -172,12 +172,12 @@ BrazilFlagQr.pix(
 
 > **Marandu:** Pe pe'aha ojeiporavoreíva oĩva techapyrãme (`example/`) ndaha'éi añetegua (ojepuru ojehechauka hag̃uánte). Reipota ramo eme'ẽ peteĩ kafe repy reipytyvõ hag̃ua, eipuru umi votõ PayPal térã pe QR oĩva iguýpe. ☕
 
-<a href="https://www.paypal.com/donate/?business=45GRDVDKNTYWJ&no_recurring=0&item_name=Con+tu+ayuda+seguimos+mejorando+ArandukApp+gratis+para+acercar+el+idioma+y+la+cultura+guaran%C3%AD+a+todos.+%C2%A1Aguyjevete%21&currency_code=USD"><img src="screenshots/paypal.png" height="13" alt="Me'ẽrei USD" />  Me'ẽrei USD Paypal rupive</a>
+<a href="https://www.paypal.com/donate/?business=45GRDVDKNTYWJ&no_recurring=0&item_name=Con+tu+ayuda+seguimos+mejorando+ArandukApp+gratis+para+acercar+el+idioma+y+la+cultura+guaran%C3%AD+a+todos.+%C2%A1Aguyjevete%21&currency_code=USD"><img src="https://raw.githubusercontent.com/DerLop/brazil_flag_pix_qr/refs/heads/main/screenshots/paypal.png" height="13" alt="Me'ẽrei USD" />  Me'ẽrei USD Paypal rupive</a>
 <br/>
-<a href="https://www.paypal.com/donate/?business=45GRDVDKNTYWJ&no_recurring=0&item_name=Con+tu+ayuda+seguimos+mejorando+ArandukApp+gratis+para+acercar+el+idioma+y+la+cultura+guaran%C3%AD+a+todos.+%C2%A1Aguyjevete%21&currency_code=EUR"><img src="screenshots/paypal.png" height="13" alt="Me'ẽrei EUR" />  Me'ẽrei EUR Paypal rupive</a>
+<a href="https://www.paypal.com/donate/?business=45GRDVDKNTYWJ&no_recurring=0&item_name=Con+tu+ayuda+seguimos+mejorando+ArandukApp+gratis+para+acercar+el+idioma+y+la+cultura+guaran%C3%AD+a+todos.+%C2%A1Aguyjevete%21&currency_code=EUR"><img src="https://raw.githubusercontent.com/DerLop/brazil_flag_pix_qr/refs/heads/main/screenshots/paypal.png" height="13" alt="Me'ẽrei EUR" />  Me'ẽrei EUR Paypal rupive</a>
 
 <p><strong>Térã embohasa ne pumbyry ko QR Pix rehe reipytyvõ hag̃ua ko tembiapóre:</strong></p>
-<img src="screenshots/qr_pix.png" width="180" alt="QR Pix pytyvõrã" />
+<img src="https://raw.githubusercontent.com/DerLop/brazil_flag_pix_qr/refs/heads/main/screenshots/qr_pix.png" width="180" alt="QR Pix pytyvõrã" />
 
 ---
 
@@ -259,12 +259,12 @@ BrazilFlagQr.pix(
 
 > **Note:** The random key included in the `example/` app is a dummy key for testing purposes only. If you'd like to buy me a coffee to support the project, please use the PayPal links or the QR code below. ☕
 
-<a href="https://www.paypal.com/donate/?business=45GRDVDKNTYWJ&no_recurring=0&item_name=Con+tu+ayuda+seguimos+mejorando+ArandukApp+gratis+para+acercar+el+idioma+y+la+cultura+guaran%C3%AD+a+todos.+%C2%A1Aguyjevete%21&currency_code=USD"><img src="screenshots/paypal.png" height="13" alt="Donate in USD" />  Donate in USD Paypal</a>
+<a href="https://www.paypal.com/donate/?business=45GRDVDKNTYWJ&no_recurring=0&item_name=Con+tu+ayuda+seguimos+mejorando+ArandukApp+gratis+para+acercar+el+idioma+y+la+cultura+guaran%C3%AD+a+todos.+%C2%A1Aguyjevete%21&currency_code=USD"><img src="https://raw.githubusercontent.com/DerLop/brazil_flag_pix_qr/refs/heads/main/screenshots/paypal.png" height="13" alt="Donate in USD" />  Donate in USD Paypal</a>
 <br/>
-<a href="https://www.paypal.com/donate/?business=45GRDVDKNTYWJ&no_recurring=0&item_name=Con+tu+ayuda+seguimos+mejorando+ArandukApp+gratis+para+acercar+el+idioma+y+la+cultura+guaran%C3%AD+a+todos.+%C2%A1Aguyjevete%21&currency_code=EUR"><img src="screenshots/paypal.png" height="13" alt="Donate in EUR" />  Donate in EUR Paypal</a>
+<a href="https://www.paypal.com/donate/?business=45GRDVDKNTYWJ&no_recurring=0&item_name=Con+tu+ayuda+seguimos+mejorando+ArandukApp+gratis+para+acercar+el+idioma+y+la+cultura+guaran%C3%AD+a+todos.+%C2%A1Aguyjevete%21&currency_code=EUR"><img src="https://raw.githubusercontent.com/DerLop/brazil_flag_pix_qr/refs/heads/main/screenshots/paypal.png" height="13" alt="Donate in EUR" />  Donate in EUR Paypal</a>
 
 <p><strong>Or scan this Pix QR code to support the project:</strong></p>
-<img src="screenshots/qr_pix.png" width="180" alt="Donation Pix QR Code" />
+<img src="https://raw.githubusercontent.com/DerLop/brazil_flag_pix_qr/refs/heads/main/screenshots/qr_pix.png" width="180" alt="Donation Pix QR Code" />
 
 ---
 
@@ -344,12 +344,12 @@ BrazilFlagQr.pix(
 
 > **Nota:** A chave aleatória incluída no aplicativo de exemplo (`example/`) é fictícia (apenas para testes). Caso queira pagar um café para apoiar o projeto, utilize os links do PayPal ou o QR code abaixo. ☕
 
-<a href="https://www.paypal.com/donate/?business=45GRDVDKNTYWJ&no_recurring=0&item_name=Con+tu+ayuda+seguimos+mejorando+ArandukApp+gratis+para+acercar+el+idioma+y+la+cultura+guaran%C3%AD+a+todos.+%C2%A1Aguyjevete%21&currency_code=USD"><img src="screenshots/paypal.png" height="13" alt="Doar em USD" />  Doar em USD com Paypal</a>
+<a href="https://www.paypal.com/donate/?business=45GRDVDKNTYWJ&no_recurring=0&item_name=Con+tu+ayuda+seguimos+mejorando+ArandukApp+gratis+para+acercar+el+idioma+y+la+cultura+guaran%C3%AD+a+todos.+%C2%A1Aguyjevete%21&currency_code=USD"><img src="https://raw.githubusercontent.com/DerLop/brazil_flag_pix_qr/refs/heads/main/screenshots/paypal.png" height="13" alt="Doar em USD" />  Doar em USD com Paypal</a>
 <br/>
-<a href="https://www.paypal.com/donate/?business=45GRDVDKNTYWJ&no_recurring=0&item_name=Con+tu+ayuda+seguimos+mejorando+ArandukApp+gratis+para+acercar+el+idioma+y+la+cultura+guaran%C3%AD+a+todos.+%C2%A1Aguyjevete%21&currency_code=EUR"><img src="screenshots/paypal.png" height="13" alt="Doar em EUR" />  Doar em EUR com Paypal</a>
+<a href="https://www.paypal.com/donate/?business=45GRDVDKNTYWJ&no_recurring=0&item_name=Con+tu+ayuda+seguimos+mejorando+ArandukApp+gratis+para+acercar+el+idioma+y+la+cultura+guaran%C3%AD+a+todos.+%C2%A1Aguyjevete%21&currency_code=EUR"><img src="https://raw.githubusercontent.com/DerLop/brazil_flag_pix_qr/refs/heads/main/screenshots/paypal.png" height="13" alt="Doar em EUR" />  Doar em EUR com Paypal</a>
 
 <p><strong>Ou escaneie este QR Pix para apoiar o projeto:</strong></p>
-<img src="screenshots/qr_pix.png" width="180" alt="QR Pix de doação" />
+<img src="https://raw.githubusercontent.com/DerLop/brazil_flag_pix_qr/refs/heads/main/screenshots/qr_pix.png" width="180" alt="QR Pix de doação" />
 
 
 ---
