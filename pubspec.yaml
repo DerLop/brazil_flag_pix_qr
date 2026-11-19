@@ -1,9 +1,8 @@
 name: brazil_flag_pix_qr
 description: Generate Brazilian Pix BR Code (EMV) payloads with custom messages and render QR codes styled with the Brazilian flag colors and circular dots.
-version: 1.0.0
+version: 1.0.1
 homepage: https://github.com/DerLop/brazil_flag_pix_qr
 repository: https://github.com/DerLop/brazil_flag_pix_qr
-issue_tracker: https://github.com
 
 topics:
   - pix
@@ -19,7 +18,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  qr: ^3.0.2
+  qr: ^4.0.1
 
 dev_dependencies:
   flutter_test:

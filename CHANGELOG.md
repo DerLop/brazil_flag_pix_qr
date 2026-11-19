@@ -1,3 +1,16 @@
+## 1.0.1
+
+### 🇪🇸 Español
+* **Actualización de dependencias:** Se actualizó el paquete `qr` a la versión `^4.0.1` para mantener compatibilidad con las últimas versiones del ecosistema Dart/Flutter.
+* **Eliminación de `material.dart`:** Se migró `BrazilFlagQr` a `package:flutter/widgets.dart` reemplazando el ícono de Material por un dibujante vectorial propio (`CustomPaint`) del símbolo oficial de Pix, eliminando advertencias de obsolescencia en Flutter 3.50+.
+* **Licencia OSI estándar:** Se ajustó el archivo `LICENSE` al formato oficial MIT en inglés para su detección automática en pub.dev.
+
+### 🇺🇸 English
+* **Dependency upgrade:** Upgraded the `qr` package constraint to `^4.0.1` for full compatibility with the latest Dart/Flutter ecosystem releases.
+* **Removed `material.dart` dependency:** Migrated `BrazilFlagQr` to `package:flutter/widgets.dart` and replaced the Material icon with a custom vector painter (`CustomPaint`) for the official Pix logo, resolving deprecation warnings in Flutter 3.50+.
+* **Standard OSI License:** Updated `LICENSE` to the standard English MIT template for proper automated detection on pub.dev.
+
+
 ## 1.0.0
 
 ### 🇪🇸 Español

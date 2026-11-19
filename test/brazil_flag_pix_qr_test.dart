@@ -1,12 +1,10 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:brazil_flag_pix_qr/brazil_flag_pix_qr.dart';
 
 void main() {
   group('PixPayloadBuilder Unit Tests / Pruebas Unitarias', () {
     test('Generates exact payload with description, amount, and CRC16 / Genera payload exacto con descripción, monto y CRC16', () {
-      // English: Uses fictional data and a dummy UUID key to verify EMV structure and CRC16.
-      // Español: Usa datos ficticios y una llave UUID de prueba para verificar la estructura EMV y el CRC16.
       final payload = PixPayloadBuilder.generate(
         pixKey: '123e4567-e89b-12d3-a456-426614174000',
         merchantName: 'JUAN PEREZ SILVA',
@@ -33,8 +31,6 @@ void main() {
         merchantCity: 'Rio de Janeiro',
       );
 
-      // English: Field 54 (Amount) must not be present when amount is null.
-      // Español: El campo 54 (Monto) no debe existir cuando el monto es nulo.
       expect(payload.contains('53039865802BR'), isTrue);
       expect(payload.endsWith('6304') == false && payload.length > 20, isTrue);
     });
@@ -81,16 +77,16 @@ void main() {
         );
 
         await tester.pumpWidget(
-          MaterialApp(
-            home: Scaffold(
-              body: BrazilFlagQr.fromPayload(payload: payload, size: 200),
+          Directionality(
+            textDirection: TextDirection.ltr,
+            child: Center(
+              child: BrazilFlagQr.fromPayload(payload: payload, size: 200),
             ),
           ),
         );
 
         expect(find.byType(BrazilFlagQr), findsOneWidget);
-        expect(find.byType(CustomPaint), findsWidgets);
-        expect(find.byIcon(Icons.pix), findsOneWidget);
+        expect(find.byType(CustomPaint), findsNWidgets(2));
       },
     );
 
@@ -98,9 +94,10 @@ void main() {
       'Renders BrazilFlagQr.pix all-in-one constructor / Renderiza el constructor todo-en-uno BrazilFlagQr.pix',
       (tester) async {
         await tester.pumpWidget(
-          MaterialApp(
-            home: Scaffold(
-              body: BrazilFlagQr.pix(
+          Directionality(
+            textDirection: TextDirection.ltr,
+            child: Center(
+              child: BrazilFlagQr.pix(
                 pixKey: '123e4567-e89b-12d3-a456-426614174000',
                 merchantName: 'Pedro Santos',
                 merchantCity: 'Brasilia',
@@ -113,7 +110,7 @@ void main() {
         );
 
         expect(find.byType(BrazilFlagQr), findsOneWidget);
-        expect(find.byIcon(Icons.pix), findsNothing);
+        expect(find.byType(CustomPaint), findsOneWidget);
       },
     );
   });

@@ -1,6 +1,6 @@
 import 'dart:math';
 
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:qr/qr.dart';
 
 import 'pix_payload_builder.dart';
@@ -76,16 +76,17 @@ class BrazilFlagQr extends StatelessWidget {
   Widget build(BuildContext context) {
     // English: Use High (H) error correction so the center icon never blocks scanning.
     // Español: Usa corrección de errores Alta (H) para que el ícono central nunca impida el escaneo.
-    final qrCode = QrCode.fromData(
-      data: payload,
-      errorCorrectLevel: QrErrorCorrectLevel.H,
+    final qrCode = QrCode(
+      payload: QrPayload.fromString(payload),
+      errorCorrectLevel: QrErrorCorrectLevel.high,
     );
+
     final qrImage = QrImage(qrCode);
 
     final Widget? resolvedCenter =
         centerWidget ??
         (showDefaultPixIcon
-            ? const Icon(Icons.pix, color: Color(0xFF32BCAD), size: 28)
+            ? CustomPaint(size: const Size(24, 24), painter: _PixLogoPainter())
             : null);
 
     return Container(
@@ -93,9 +94,9 @@ class BrazilFlagQr extends StatelessWidget {
       height: size,
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: const Color(0xFFFFFFFF),
         borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: Colors.grey.shade300),
+        border: Border.all(color: const Color(0xFFE0E0E0)),
       ),
       child: Stack(
         alignment: Alignment.center,
@@ -137,7 +138,7 @@ class _BrazilFlagQrPainter extends CustomPainter {
     final greenPaint = Paint()..color = const Color(0xFF009C3B);
     final yellowPaint = Paint()..color = const Color(0xFFD99B00);
     final bluePaint = Paint()..color = const Color(0xFF002776);
-    final whitePaint = Paint()..color = Colors.white;
+    final whitePaint = Paint()..color = const Color(0xFFFFFFFF);
 
     final double center = moduleCount / 2.0;
 
@@ -246,4 +247,36 @@ class _BrazilFlagQrPainter extends CustomPainter {
   @override
   bool shouldRepaint(covariant _BrazilFlagQrPainter oldDelegate) =>
       oldDelegate.qrImage != qrImage;
+}
+
+class _PixLogoPainter extends CustomPainter {
+  @override
+  void paint(Canvas canvas, Size size) {
+    final paint = Paint()
+      ..color = const Color(0xFF32BCAD)
+      ..style = PaintingStyle.fill;
+
+    final double c = size.width / 2;
+    final double r = size.width * 0.22;
+    final double d = size.width * 0.25;
+
+    void drawDiamond(Offset center) {
+      final path = Path()
+        ..moveTo(center.dx, center.dy - r)
+        ..lineTo(center.dx + r, center.dy)
+        ..lineTo(center.dx, center.dy + r)
+        ..lineTo(center.dx - r, center.dy)
+        ..close();
+      canvas.drawPath(path, paint);
+    }
+
+    // 4 pétalos en cruz que forman el símbolo oficial de Pix
+    drawDiamond(Offset(c, c - d)); // Arriba
+    drawDiamond(Offset(c, c + d)); // Abajo
+    drawDiamond(Offset(c - d, c)); // Izquierda
+    drawDiamond(Offset(c + d, c)); // Derecha
+  }
+
+  @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
 }
