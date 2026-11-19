@@ -28,7 +28,7 @@ Agrega `brazil_flag_pix_qr` en tu archivo `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  brazil_flag_pix_qr: ^1.0.0
+  brazil_flag_pix_qr: ^1.0.1
 ```
 
 ### Formatos de Llave Pix soportados (`pixKey`)
@@ -116,7 +116,7 @@ Emoĩ `brazil_flag_pix_qr` ne ñongatuha `pubspec.yaml` ryepýpe:
 
 ```yaml
 dependencies:
-  brazil_flag_pix_qr: ^1.0.0
+  brazil_flag_pix_qr: ^1.0.1
 ```
 
 ### Pe'aha Pix oñemoneĩva (`pixKey`)
@@ -200,7 +200,7 @@ Add `brazil_flag_pix_qr` to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  brazil_flag_pix_qr: ^1.0.0
+  brazil_flag_pix_qr: ^1.0.1
 ```
 
 ### Supported Pix Key Formats (`pixKey`)
@@ -286,7 +286,7 @@ Adicione `brazil_flag_pix_qr` no seu arquivo `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  brazil_flag_pix_qr: ^1.0.0
+  brazil_flag_pix_qr: ^1.0.1
 ```
 
 ### Formatos de Chave Pix suportados (`pixKey`)
