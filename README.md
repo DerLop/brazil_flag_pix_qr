@@ -1,6 +1,6 @@
 # brazil_flag_pix_qr 🇧🇷
 
-[🇪🇸 Español](#-español) | [🇵🇾 Avañe'ẽ (Guaraní)](#-avañeẽ-guaraní) | [🇺🇸 English](#-english) | [🇧🇷 Português](#-português)
+[🇪🇸 Español](#-español) | [🇵🇾 Avañe'ẽ](#-avañeẽ) | [🇺🇸 English](#-english) | [🇧🇷 Português](#-português)
 
 
 
@@ -28,7 +28,7 @@ Agrega `brazil_flag_pix_qr` en tu archivo `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  brazil_flag_pix_qr: ^1.0.0
+  brazil_flag_pix_qr: ^1.1.0
 ```
 
 ### Formatos de Llave Pix soportados (`pixKey`)
@@ -55,7 +55,7 @@ Usa `PixPayloadBuilder.generate` si solo necesitas obtener el texto *Pix Copia e
 import 'package:brazil_flag_pix_qr/brazil_flag_pix_qr.dart';
 
 final String pixCopyPaste = PixPayloadBuilder.generate(
-  pixKey: 'tu-llave-aleatoria-pix',
+  pixKey: 'tu-llave-pix',
   merchantName: 'JUAN PEREZ',
   merchantCity: 'Sao Paulo',
   description: 'Apoyo al proyecto',
@@ -66,26 +66,65 @@ final String pixCopyPaste = PixPayloadBuilder.generate(
 
 #### 2. Renderizar el QR a partir de un Payload existente
 ```dart
-import 'package:flutter/material.dart';
 import 'package:brazil_flag_pix_qr/brazil_flag_pix_qr.dart';
 
 BrazilFlagQr.fromPayload(
-  payload: pixCopyPaste,
-  size: 220,
+  payload: pixPayload,
+  showLogo: true,
+  showContainer: true,
+  logoImage: const AssetImage('assets/example.png'),
+  size: 240,
+  logoSize: 30,
 )
 ```
+#### Propiedades del widget `BrazilFlagQr.fromPayload`
+
+| Propiedad | Tipo | Por defecto | Descripción |
+| :--- | :--- | :--- | :--- |
+| **`payload`** | `String` | *(Requerido)* | La cadena de texto *Pix Copia e Cola* (EMV) ya generada que se codificará en el QR. |
+| **`size`** | `double` | `220` | Ancho y alto total del widget QR en píxeles lógicos. |
+| **`showLogo`** | `bool` | `true` | Muestra u oculta el logo central. Si es `false`, rellena el centro con puntos del QR sin dejar espacios vacíos. |
+| **`logoImage`** | `ImageProvider?` | `null` | Imagen personalizada opcional para el centro (ej. `AssetImage(...)`). Si es `null` y `showLogo` es `true`, dibuja el logo vectorial de Pix. |
+| **`logoSize`** | `double?` | `null` | Tamaño fijo opcional en píxeles lógicos para el logo central (limitado automáticamente a un máximo seguro del 24% del QR). |
+| **`logoSizeRatio`** | `double` | `0.10` | Proporción del tamaño del logo respecto al ancho interno del QR (10% por defecto). Se ignora si se define `logoSize`. |
+| **`showContainer`** | `bool` | `true` | Envuelve el QR en el recuadro blanco redondeado con borde por defecto. Ponlo en `false` para renderizar solo el QR puro. |
+
 
 #### 3. Widget Todo-en-Uno (Payload + QR Bandera)
 ```dart
+import 'package:brazil_flag_pix_qr/brazil_flag_pix_qr.dart';
+
 BrazilFlagQr.pix(
-  pixKey: 'tu-llave-aleatoria-pix',
+  pixKey: 'tu-llave-pix',
   merchantName: 'JUAN PEREZ',
-  merchantCity: 'Sao Paulo',
+  merchantCity: 'San Pablo',
   description: 'Muchas gracias por tu apoyo',
+  txId: 'demoTxId01',
   amount: 15.00,
-  size: 220,
+  showLogo: true,
+  logoImage: const AssetImage('assets/example.png'),
+  showContainer: false,
+  logoSize: 20,
+  size: 240,
 )
 ```
+#### Propiedades del widget `BrazilFlagQr.pix`
+
+| Propiedad | Tipo | Por defecto | Descripción |
+| :--- | :--- | :--- | :--- |
+| **`pixKey`** | `String` | *(Requerido)* | Tu llave Pix oficial (EVP aleatoria, CPF, CNPJ, teléfono `+55...` o correo). |
+| **`merchantName`** | `String` | *(Requerido)* | Nombre del titular o comercio que recibe el pago (se limpia automáticamente de tildes y símbolos). |
+| **`merchantCity`** | `String` | *(Requerido)* | Ciudad del titular o comercio (ej. `'San Pablo`). |
+| **`description`** | `String?` | `null` | Mensaje o descripción opcional que aparece al pagador (ajustado automáticamente al límite de 99 caracteres). |
+| **`txId`** | `String` | `'***'` | Identificador único opcional de la transacción (máximo 25 caracteres alfanuméricos). |
+| **`amount`** | `double?` | `null` | Monto fijo opcional a cobrar (ej. `15.00`). Si se omite o es `null`, el pagador elige el valor libremente. |
+| **`size`** | `double` | `220` | Ancho y alto total del widget QR en píxeles lógicos. |
+| **`showLogo`** | `bool` | `true` | Muestra u oculta el logo central. Si es `false`, rellena el centro con puntos del QR sin dejar espacios vacíos. |
+| **`logoImage`** | `ImageProvider?` | `null` | Imagen personalizada para el centro (ej. `AssetImage(...)`). Si es `null` y `showLogo` es `true`, dibuja el logo vectorial de Pix. |
+| **`logoSize`** | `double?` | `null` | Tamaño fijo opcional en píxeles lógicos para el logo central (limitado automáticamente a un máximo seguro del 24% del QR). |
+| **`logoSizeRatio`** | `double` | `0.10` | Proporción del tamaño del logo respecto al ancho interno del QR (10% por defecto). Se ignora si se define `logoSize`. |
+| **`showContainer`** | `bool` | `true` | Envuelve el QR en el recuadro blanco redondeado con borde por defecto. Ponlo en `false` para renderizar solo el QR puro. |
+
 
 > **Nota:** La llave aleatoria incluida en la app de ejemplo (`example/`) es ficticia (solo para pruebas). Si deseas invitarme un café para apoyar el proyecto, utiliza los enlaces de PayPal o el QR de abajo. ☕
 
@@ -98,17 +137,17 @@ BrazilFlagQr.pix(
 
 ---
 
-<a name="guarani"></a>
-## 🇵🇾 Avañe'ẽ (Guaraní)
+<a name="avañeẽ"></a>
+## 🇵🇾 Avañe'ẽ
 
-Kóva ha'e peteĩ tembipuru Flutter ha Dart-pe guarã ojapóva **Pix BR Code (EMV)** ogueraháva **marandu (mensaje)** ha **txId**, avei oguereko peteĩ *widget* omoha'angáva kódigo QR apu'a'íva ha **Pindoráma poyvi (bandera)** sa'ykuéra reheve.
+Kóva ha'e peteĩ tembipuru *Flutter* ha *Dart*-pe guarã ojapóva ***Pix BR Code (EMV)*** ogueraháva **marandu (*mensaje*)** ha **txId**, avei oguereko peteĩ *widget* omoha'angáva kódigo KR (*QR*) apu'a'íva ha **Pindoráma poyvi (*bandera*)** sa'ykuéra reheve.
 
 ### Mba'emba'épa ojapo
 
 * **Payload ñemoheñói año (`PixPayloadBuilder`):** Ojapo moñe'ẽrã *Pix Copia e Cola* oikotevẽ'ỹre ta'anga rehegua.
-* **QR Pindoráma Poyvi Sa'y reheve (`BrazilFlagQr`):** Omoha'anga código QR apu'a hovyũ, sa'yju, hovy ha Pix ra'anga mbytépe.
-* **Marandu ha Techaukaha:** Oipapa ijehegui mboy tai pa oñemoĩkuaa pe campo `26` ryepýpe (99 tai peve Banco Central de Brasil he'iháicha).
-* **Moñe'ẽrã Ñemopotĩ:** Oipe'a ijehegui umi tai oñembojegua'íva (tildes) ha oipapa **CRC16-CCITT (0xFFFF)**.
+* **QR Pindoráma Poyvi Sa'y reheve (`BrazilFlagQr`):** Omoha'anga kódigo KR (*QR*) apu'a hovyũ, sa'yju, hovy ha *Pix* ra'anga mbytépe.
+* **Marandu ha Techaukaha:** Oipapa ijehegui mboy tai pa oñemoĩkuaa pe campo `26` ryepýpe (99 tai peve *Banco Central de Brasil* he'iháicha).
+* **Moñe'ẽrã Ñemopotĩ:** Oipe'a ijehegui umi tai oguerekóva muanduhe (*tildes*) ha oipapa **CRC16-CCITT (0xFFFF)**.
 
 ### Ñemohenda (Instalación)
 
@@ -116,7 +155,7 @@ Emoĩ `brazil_flag_pix_qr` ne ñongatuha `pubspec.yaml` ryepýpe:
 
 ```yaml
 dependencies:
-  brazil_flag_pix_qr: ^1.0.0
+  brazil_flag_pix_qr: ^1.1.0
 ```
 
 ### Pe'aha Pix oñemoneĩva (`pixKey`)
@@ -127,7 +166,7 @@ dependencies:
 | **CPF** | 11 papapy año (kyta ha taiky'ỹre) | `'12345678909'` |
 | **CNPJ** | 14 papapy año | `'12345678000195'` |
 | **Pumbyry (Teléfono)** | `+55` + DDD + 9 papapy | `'+5511987654321'` |
-| **Ñe'ẽveve (Correo)** | Tai michĩvape | `'usuario@techapyra.com'` |
+| **Ñe'ẽveve (Correo)** | Tai michĩvape | `'puruhara@techapyra.com'` |
 
 ### Mba'éichapa ojepuru
 
@@ -136,41 +175,80 @@ dependencies:
 import 'package:brazil_flag_pix_qr/brazil_flag_pix_qr.dart';
 
 final String pixCopyPaste = PixPayloadBuilder.generate(
-  pixKey: "nde-pe'aha-ojeiporavoreíva-pix",
+  pixKey: 'nde-pe\'aha-pix',
   merchantName: 'JUAN PEREZ',
   merchantCity: 'Sao Paulo',
-  description: 'Agyuje reipytyvõ haguére',
+  description: 'Aguyje reipytyvõ haguére',
   txId: 'customTxId01',
   amount: 10.00, // Ikatu reheja péva nandi pe ohepyme'ẽtava oiporavo hag̃ua mboypa ome'ẽta (opcional)
 
 );
 ```
 
-#### 2. QR ñemoha'anga Payload oĩmavagui
+#### 2. *QR* ñemoha'anga *Payload* oĩmavagui
 ```dart
-import 'package:flutter/material.dart';
 import 'package:brazil_flag_pix_qr/brazil_flag_pix_qr.dart';
 
 BrazilFlagQr.fromPayload(
-  payload: pixCopyPaste,
-  size: 220,
+  payload: pixPayload,
+  showLogo: true,
+  showContainer: true,
+  logoImage: const AssetImage('assets/example.png'),
+  size: 240,
+  logoSize: 30,
 )
 ```
+#### Mba'épa ojapo peteĩteĩ umi mba'e oĩva `BrazilFlagQr.fromPayload`-pe
 
-#### 3. Widget Oĩmbáva (Payload + QR Poyvi)
+| Mba'e (*Propiedad*) | Reko (*Tipo*) | Oĩva ijehegui | Mba'épa ojapo |
+| :--- | :--- | :--- | :--- |
+| **`payload`** | `String` | *(Oñeikotevẽ)* | Pe moñe'ẽrã *Pix Copia e Cola* (EMV) ojejapómava oñemoĩtava pe KR (*QR*) ryepýpe. |
+| **`size`** | `double` | `220` | Mboypa tuicháta pe ta'anga KR (*QR*) (*píxeles*-pe). |
+| **`showLogo`** | `bool` | `true` | Ohechauka térã oñomi pe ta'anga mbytepegua. Oĩ ramo `false`, omyenyhẽ mbyte KR (*QR*) apu'a'ípe. |
+| **`logoImage`** | `ImageProvider?` | `null` | Ta'anga nemba'éva remoĩséva mbytépe (techapyrã `AssetImage(...)`, ndaha'éi tekotevẽva emoĩ). Ndaipóriramo, omoha'anga *Pix* ra'anga. |
+| **`logoSize`** | `double?` | `null` | Mboypa tuicháta pe ta'anga mbytepegua *píxeles*-pe (24% peve ikatu oñembotuicha ani hag̃ua ombyai KR, ndaha'éi tekotevẽva emoĩ). |
+| **`logoSizeRatio`** | `double` | `0.10` | Mboy vorepa ojagarráta pe logo KR (*QR*) mbytépe (10% ijehegui). Ndojepurúi remoĩ ramo `logoSize`. |
+| **`showContainer`** | `bool` | `true` | Omoĩ pe KR (*QR*) ryru morotĩ ijere apu'áva ryepýpe. Emoĩ `false`-pe reipota ramo pe KR (*QR*) añónte. |
+
+
+#### 3. *Widget* Oĩmbáva (*Payload + QR* Poyvi)
 ```dart
+import 'package:brazil_flag_pix_qr/brazil_flag_pix_qr.dart';
+
 BrazilFlagQr.pix(
-  pixKey: "nde-pe'aha-ojeiporavoreíva-pix",
+  pixKey: "nde-pe'aha-pix",
   merchantName: 'JUAN PEREZ',
   merchantCity: 'Sao Paulo',
   description: 'Aguyjevete reipytyvõ haguére',
+  txId: 'demoTxId01',
   amount: 15.00,
-  size: 220,
+  showLogo: true,
+  logoImage: const AssetImage('assets/example.png'),
+  showContainer: false,
+  logoSize: 20,
+  size: 240,
 )
 ```
+#### Mba'épa ojapo peteĩteĩ umi mba'e oĩva `BrazilFlagQr.pix`-pe
+
+| Mba'e (Propiedad) | Reko (Tipo) | Oĩva ijehegui | Mba'épa ojapo |
+| :--- | :--- | :--- | :--- |
+| **`pixKey`** | `String` | *(Oñeikotevẽ)* | Nde pe'aha *Pix* (EVP ojeiporavoreíva, CPF, CNPJ, pumbyry `+55...` térã ñe'ẽveve). |
+| **`merchantName`** | `String` | *(Oñeikotevẽ)* | Ohepyme'ẽtava réra térã ñemuha réra (oipe'a ijehegui muanduhekuéra ha tai ambuéva). |
+| **`merchantCity`** | `String` | *(Oñeikotevẽ)* | Táva réra (techapyrã `'Sao Paulo'`). |
+| **`description`** | `String?` | `null` | Marandu mbyky ohechátava pe ohepyme'ẽva (99 tai peve, ndaha'éi tekotevẽva emoĩ). |
+| **`txId`** | `String` | `'***'` | Techaukaha oñembojoavy hag̃ua pe ñehepyme'ẽ (25 tai peve, ndaha'éi tekotevẽva emoĩ). |
+| **`amount`** | `double?` | `null` | Mboypa ojehepyme'ẽta (techapyrã `15.00`, ndaha'éi tekotevẽva emoĩ). Reheja ramo `null`, pe tapicha oiporavóta mboypa ome'ẽta. |
+| **`size`** | `double` | `220` | Mboypa tuicháta pe ta'anga KR (*QR*) (*píxeles*-pe). |
+| **`showLogo`** | `bool` | `true` | Ohechauka térã oñomi pe ta'anga mbytepegua. Oĩ ramo `false`, omyenyhẽ mbyte KR (*QR*) apu'a'ípe. |
+| **`logoImage`** | `ImageProvider?` | `null` | Ta'anga nemba'éva remoĩséva mbytépe (techapyrã `AssetImage(...)`, ndaha'éi tekotevẽva emoĩ). Ndaipóriramo, omoha'anga *Pix* ra'anga. |
+| **`logoSize`** | `double?` | `null` | Mboypa tuicháta pe ta'anga mbytepegua *píxeles*-pe (24% peve ikatu oñembotuicha ani hag̃ua ombyai KR, ndaha'éi tekotevẽva emoĩ). |
+| **`logoSizeRatio`** | `double` | `0.10` | Mboy vorepa ojagarráta pe logo KR (*QR*) mbytépe (10% ijehegui). Ndojepurúi remoĩ ramo `logoSize`. |
+| **`showContainer`** | `bool` | `true` | Omoĩ pe KR (*QR*) ryru morotĩ ijere apu'áva ryepýpe. Emoĩ `false`-pe reipota ramo pe KR (*QR*) añónte. |
 
 
-> **Marandu:** Pe pe'aha ojeiporavoreíva oĩva techapyrãme (`example/`) ndaha'éi añetegua (ojepuru ojehechauka hag̃uánte). Reipota ramo eme'ẽ peteĩ kafe repy reipytyvõ hag̃ua, eipuru umi votõ PayPal térã pe QR oĩva iguýpe. ☕
+
+> **Marandu:** Pe pe'aha ojeiporavoreíva oĩva techapyrãme (`example/`) ndaha'éi añetegua (ojepuru ojehechauka hag̃uánte). Reipota ramo eme'ẽ peteĩ kafe repy reipytyvõ hag̃ua, eipuru umi votõ PayPal térã pe KR (*QR*) oĩva iguýpe. ☕
 
 <a href="https://www.paypal.com/donate/?business=45GRDVDKNTYWJ&no_recurring=0&item_name=Con+tu+ayuda+seguimos+mejorando+ArandukApp+gratis+para+acercar+el+idioma+y+la+cultura+guaran%C3%AD+a+todos.+%C2%A1Aguyjevete%21&currency_code=USD"><img src="https://raw.githubusercontent.com/DerLop/brazil_flag_pix_qr/refs/heads/main/screenshots/paypal.png" height="13" alt="Me'ẽrei USD" />  Me'ẽrei USD Paypal rupive</a>
 <br/>
@@ -200,7 +278,7 @@ Add `brazil_flag_pix_qr` to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  brazil_flag_pix_qr: ^1.0.0
+  brazil_flag_pix_qr: ^1.1.0
 ```
 
 ### Supported Pix Key Formats (`pixKey`)
@@ -225,7 +303,7 @@ Use `PixPayloadBuilder.generate` if you only need the *Pix Copia e Cola* string:
 import 'package:brazil_flag_pix_qr/brazil_flag_pix_qr.dart';
 
 final String pixCopyPaste = PixPayloadBuilder.generate(
-  pixKey: 'your-random-pix-key',
+  pixKey: 'your-pix-key',
   merchantName: 'JOHN DOE',
   merchantCity: 'Sao Paulo',
   description: 'Project support',
@@ -236,26 +314,65 @@ final String pixCopyPaste = PixPayloadBuilder.generate(
 
 #### 2. Render QR Code from an Existing Payload
 ```dart
-import 'package:flutter/material.dart';
 import 'package:brazil_flag_pix_qr/brazil_flag_pix_qr.dart';
 
 BrazilFlagQr.fromPayload(
-  payload: pixCopyPaste,
-  size: 220,
+  payload: pixPayload,
+  showLogo: true,
+  showContainer: true,
+  logoImage: const AssetImage('assets/example.png'),
+  size: 240,
+  logoSize: 30,
 )
 ```
+#### `BrazilFlagQr.fromPayload` Widget Properties
+
+| Property | Type | Default | Description |
+| :--- | :--- | :--- | :--- |
+| **`payload`** | `String` | *(Required)* | The pre-generated *Pix Copia e Cola* (EMV) string to encode inside the QR code. |
+| **`size`** | `double` | `220` | Total width and height of the QR widget in logical pixels. |
+| **`showLogo`** | `bool` | `true` | Shows or hides the center logo. When `false`, the center is filled with QR dots with no blank gap. |
+| **`logoImage`** | `ImageProvider?` | `null` | Optional custom center image (e.g., `AssetImage(...)`). If `null` while `showLogo` is `true`, draws the built-in vector Pix logo. |
+| **`logoSize`** | `double?` | `null` | Optional fixed width and height in logical pixels for the center logo (clamped to a safe 24% max of QR width). |
+| **`logoSizeRatio`** | `double` | `0.10` | Size ratio of the center logo relative to the inner QR width (10% by default). Ignored when `logoSize` is set. |
+| **`showContainer`** | `bool` | `true` | Wraps the QR code in the default white rounded container with border. Set to `false` to render the raw QR code only. |
+
 
 #### 3. All-in-One Widget (Payload + Flag QR)
 ```dart
+import 'package:brazil_flag_pix_qr/brazil_flag_pix_qr.dart';
+
 BrazilFlagQr.pix(
-  pixKey: 'your-random-pix-key',
+  pixKey: "your-pix-key",
   merchantName: 'JOHN DOE',
   merchantCity: 'Sao Paulo',
   description: 'Thank you for your support',
+  txId: 'demoTxId01',
   amount: 15.00,
-  size: 220,
+  showLogo: true,
+  logoImage: const AssetImage('assets/example.png'),
+  showContainer: false,
+  logoSize: 20,
+  size: 240,
 )
 ```
+#### `BrazilFlagQr.pix` Widget Properties
+
+| Property | Type | Default | Description |
+| :--- | :--- | :--- | :--- |
+| **`pixKey`** | `String` | *(Required)* | Your official Pix key (random EVP, CPF, CNPJ, `+55...` phone number, or email). |
+| **`merchantName`** | `String` | *(Required)* | Recipient or merchant name (automatically sanitized from accents and special characters). |
+| **`merchantCity`** | `String` | *(Required)* | Recipient or merchant city (e.g., `'Sao Paulo'`). |
+| **`description`** | `String?` | `null` | Optional message shown to the payer (automatically trimmed to fit the 99-character EMV limit). |
+| **`txId`** | `String` | `'***'` | Optional unique transaction identifier (up to 25 alphanumeric characters). |
+| **`amount`** | `double?` | `null` | Optional fixed payment amount (e.g., `15.00`). If omitted or `null`, the payer can enter any amount. |
+| **`size`** | `double` | `220` | Total width and height of the QR widget in logical pixels. |
+| **`showLogo`** | `bool` | `true` | Shows or hides the center logo. When `false`, the center is filled with QR dots with no blank gap. |
+| **`logoImage`** | `ImageProvider?` | `null` | Optional custom center image (e.g., `AssetImage(...)`). If `null` while `showLogo` is `true`, draws the built-in vector Pix logo. |
+| **`logoSize`** | `double?` | `null` | Optional fixed width and height in logical pixels for the center logo (clamped to a safe 24% max of QR width). |
+| **`logoSizeRatio`** | `double` | `0.10` | Size ratio of the center logo relative to the inner QR width (10% by default). Ignored when `logoSize` is set. |
+| **`showContainer`** | `bool` | `true` | Wraps the QR code in the default white rounded container with border. Set to `false` to render the raw QR code only. |
+
 
 > **Note:** The random key included in the `example/` app is a dummy key for testing purposes only. If you'd like to buy me a coffee to support the project, please use the PayPal links or the QR code below. ☕
 
@@ -286,7 +403,7 @@ Adicione `brazil_flag_pix_qr` no seu arquivo `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  brazil_flag_pix_qr: ^1.0.0
+  brazil_flag_pix_qr: ^1.1.0
 ```
 
 ### Formatos de Chave Pix suportados (`pixKey`)
@@ -310,7 +427,7 @@ Use `PixPayloadBuilder.generate` se precisar apenas obter o texto *Pix Copia e C
 import 'package:brazil_flag_pix_qr/brazil_flag_pix_qr.dart';
 
 final String pixCopyPaste = PixPayloadBuilder.generate(
-  pixKey: 'sua-chave-aleatoria-pix',
+  pixKey: 'sua-chave-pix',
   merchantName: 'JOAO SILVA',
   merchantCity: 'Sao Paulo',
   description: 'Apoio ao projeto',
@@ -321,26 +438,65 @@ final String pixCopyPaste = PixPayloadBuilder.generate(
 
 #### 2. Renderizar o QR a partir de um Payload existente
 ```dart
-import 'package:flutter/material.dart';
 import 'package:brazil_flag_pix_qr/brazil_flag_pix_qr.dart';
 
 BrazilFlagQr.fromPayload(
-  payload: pixCopyPaste,
-  size: 220,
+  payload: pixPayload,
+  showLogo: true,
+  showContainer: true,
+  logoImage: const AssetImage('assets/example.png'),
+  size: 240,
+  logoSize: 30,
 )
 ```
+#### Propriedades do widget `BrazilFlagQr.fromPayload`
+
+| Propriedade | Tipo | Padrão | Descrição |
+| :--- | :--- | :--- | :--- |
+| **`payload`** | `String` | *(Obrigatório)* | A string *Pix Copia e Cola* (EMV) já gerada que será codificada no QR Code. |
+| **`size`** | `double` | `220` | Largura e altura total do widget QR em pixels lógicos. |
+| **`showLogo`** | `bool` | `true` | Exibe ou oculta o logotipo central. Se `false`, preenche o centro com pontos do QR sem deixar espaços vazios. |
+| **`logoImage`** | `ImageProvider?` | `null` | Imagem personalizada opcional para o centro (ex.: `AssetImage(...)`). Se `null` e `showLogo` for `true`, desenha o ícone vetorial do Pix. |
+| **`logoSize`** | `double?` | `null` | Tamanho fixo opcional em pixels lógicos para o logotipo central (limitado automaticamente ao máximo seguro de 24% do QR). |
+| **`logoSizeRatio`** | `double` | `0.10` | Proporção do tamanho do logotipo em relação à largura interna do QR (10% por padrão). Ignorado se `logoSize` for definido. |
+| **`showContainer`** | `bool` | `true` | Envolve o QR na caixa branca arredondada com borda padrão. Defina como `false` para renderizar apenas o QR puro. |
+
 
 #### 3. Widget Tudo-em-Um (Payload + QR Bandeira)
 ```dart
+import 'package:brazil_flag_pix_qr/brazil_flag_pix_qr.dart';
+
 BrazilFlagQr.pix(
-  pixKey: 'sua-chave-aleatoria-pix',
+  pixKey: "sua-chave-pix",
   merchantName: 'JOAO SILVA',
   merchantCity: 'Sao Paulo',
   description: 'Muito obrigado pelo seu apoio',
+  txId: 'demoTxId01',
   amount: 15.00,
-  size: 220,
+  showLogo: true,
+  logoImage: const AssetImage('assets/example.png'),
+  showContainer: false,
+  logoSize: 20,
+  size: 240,
 )
 ```
+#### Propriedades do widget `BrazilFlagQr.pix`
+
+| Propriedade | Tipo | Padrão | Descrição |
+| :--- | :--- | :--- | :--- |
+| **`pixKey`** | `String` | *(Obrigatório)* | Sua chave Pix oficial (EVP aleatória, CPF, CNPJ, telefone `+55...` ou e-mail). |
+| **`merchantName`** | `String` | *(Obrigatório)* | Nome do recebedor ou estabelecimento (acentos e símbolos são removidos automaticamente). |
+| **`merchantCity`** | `String` | *(Obrigatório)* | Cidade do recebedor ou estabelecimento (ex.: `'Sao Paulo'`). |
+| **`description`** | `String?` | `null` | Mensagem ou descrição opcional exibida ao pagador (ajustada automaticamente ao limite de 99 caracteres). |
+| **`txId`** | `String` | `'***'` | Identificador único opcional da transação (até 25 caracteres alfanuméricos). |
+| **`amount`** | `double?` | `null` | Valor fixo opcional da cobrança (ex.: `15.00`). Se omitido ou `null`, o pagador escolhe o valor livremente. |
+| **`size`** | `double` | `220` | Largura e altura total do widget QR em pixels lógicos. |
+| **`showLogo`** | `bool` | `true` | Exibe ou oculta o logotipo central. Se `false`, preenche o centro com pontos do QR sem deixar espaços vazios. |
+| **`logoImage`** | `ImageProvider?` | `null` | Imagem personalizada opcional para o centro (ex.: `AssetImage(...)`). Se `null` e `showLogo` for `true`, desenha o ícone vetorial do Pix. |
+| **`logoSize`** | `double?` | `null` | Tamanho fixo opcional em pixels lógicos para o logotipo central (limitado automaticamente ao máximo seguro de 24% do QR). |
+| **`logoSizeRatio`** | `double` | `0.10` | Proporção do tamanho do logotipo em relação à largura interna do QR (10% por padrão). Ignorado se `logoSize` for definido. |
+| **`showContainer`** | `bool` | `true` | Envolve o QR na caixa branca arredondada com borda padrão. Defina como `false` para renderizar apenas o QR puro. |
+
 
 > **Nota:** A chave aleatória incluída no aplicativo de exemplo (`example/`) é fictícia (apenas para testes). Caso queira pagar um café para apoiar o projeto, utilize os links do PayPal ou o QR code abaixo. ☕
 

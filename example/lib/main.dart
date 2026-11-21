@@ -74,7 +74,78 @@ class _PixDemoScreenState extends State<PixDemoScreen> {
         padding: const EdgeInsets.all(20),
         child: Column(
           children: [
-            BrazilFlagQr.fromPayload(payload: pixPayload, size: 240),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Column(
+                  children: [
+                    BrazilFlagQr.pix(
+                      pixKey: _dummyPixKey,
+                      merchantName: 'JOHN DOE',
+                      merchantCity: 'Sao Paulo',
+                      description: _messageController.text,
+                      txId: 'demoTxId01',
+                      amount: _selectedAmount,
+                      showLogo: true,
+                      showContainer: false,
+                      logoSize: 20,
+                      size: 240,
+                    ),
+                    SizedBox(height: 10),
+                    Text(
+                      'Qr con showContainer: false, \nshowLogo: true,\nlogoImage: null',
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
+                ),
+
+                const SizedBox(width: 150),
+                Column(
+                  children: [
+                    BrazilFlagQr.fromPayload(
+                      payload: pixPayload,
+                      showLogo: true,
+                      showContainer: true,
+                      logoImage: const AssetImage('assets/paraguay.png'),
+                      size: 240,
+                      logoSize: 30,
+                    ),
+                    SizedBox(height: 10),
+                    Text(
+                      'Qr con showContainer: true, \nshowLogo: true,\nlogoImage: AssetImage()',
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(width: 150),
+                Column(
+                  children: [
+                    BrazilFlagQr.fromPayload(
+                      payload: pixPayload,
+                      showLogo: false,
+                      showContainer: true,
+                      size: 240,
+                      logoSize: 30,
+                    ),
+                    SizedBox(height: 10),
+                    Text(
+                      'Qr con showContainer: true, \nshowLogo: false \n',
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+
             const SizedBox(height: 20),
             TextField(
               controller: _messageController,

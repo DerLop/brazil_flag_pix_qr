@@ -1,3 +1,18 @@
+## 1.1.0
+
+### 🇪🇸 Español
+* **Logo personalizable y modo sin logo (`showLogo` y `logoImage`):** Ahora puedes mostrar el logo vectorial de Pix por defecto (`showLogo: true`, `logoImage: null`), colocar tu propia imagen personalizada (`logoImage: AssetImage(...)`) o rellenar completamente el centro con puntos del QR (`showLogo: false`) sin dejar espacios en blanco.
+* **Control de tamaño del logo (`logoSize` y `logoSizeRatio`):** Se agregaron propiedades para ajustar el tamaño del logo central en píxeles fijos (`logoSize`) o por proporción (`logoSizeRatio: 0.10` por defecto), escalando automáticamente el margen de seguridad para mantener el escaneo confiable.
+* **Contenedor opcional (`showContainer`):** Se añadió la opción `showContainer` (por defecto `true`) para permitir quitar el recuadro blanco redondeado con borde y envolver el QR puro en cualquier diseño propio.
+* **Alineación matemática exacta:** El logo vectorial de Pix ahora se dibuja directamente sobre el mismo lienzo (`Canvas`) que los módulos del QR, asegurando un centrado perfecto en cualquier tamaño o resolución de pantalla.
+
+### 🇺🇸 English
+* **Custom logo support & logo-free mode (`showLogo` and `logoImage`):** You can now display the default built-in vector Pix logo (`showLogo: true`, `logoImage: null`), render your own custom image (`logoImage: AssetImage(...)`), or fill the center area completely with QR dots (`showLogo: false`) without leaving a blank gap.
+* **Center logo sizing (`logoSize` and `logoSizeRatio`):** Added support for customizing the center logo size using fixed logical pixels (`logoSize`) or a relative width ratio (`logoSizeRatio: 0.10` by default), automatically scaling the center clearance zone to preserve scannability.
+* **Optional outer container (`showContainer`):** Added `showContainer` (defaults to `true`) so you can disable the default white rounded container and border to wrap the raw QR code in your own custom layout.
+* **Exact mathematical center alignment:** The default vector Pix logo is now drawn directly on the same `Canvas` as the QR modules, ensuring pixel-perfect centering across all screen sizes and orientations.
+
+
 ## 1.0.1
 
 ### 🇪🇸 Español
